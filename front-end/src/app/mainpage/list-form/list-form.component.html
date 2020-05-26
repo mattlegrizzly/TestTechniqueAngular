@@ -1,0 +1,12 @@
+
+<div *ngIf="!loading" class="col-sm-12 offset-sm-3 mt-2">
+  <button class="btn btn-link" (click)="onGoBack()"><< Retour</button>
+  <form class="text-center" [formGroup]="listForm">
+    <div class="form-group">
+      <h2 for="titre">Titre</h2>
+      <input type="text" placeholder="Quel est le nom de votre liste ?" id="titre" formControlName="titre" class="form-control">
+    </div>
+    <button class="btn btn-primary" type="button" (click)="onSubmit()" [disabled]="listForm.invalid">Valider</button>
+    <p class="alert-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+<nav class="navbar-default" style="background-color: bisque">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+
+      <li routerLinkActive="Active" *ngIf="(!isAuth)">
+        <a routerLink="auth/signup">Créer un compte</a>
+      </li>
+      <li routerLinkActive="Active" *ngIf="(!isAuth)">
+        <a routerLink="auth/signin">Connexion</a>
+      </li>
+      <li class="header-navigation-item" *ngIf="(isAuth)">
+        <a class="header-link" style="cursor: pointer" (click)="onLogout()">DECONNEXION</a>
+      </li>
+    </ul>
+  </div>
+</nav>

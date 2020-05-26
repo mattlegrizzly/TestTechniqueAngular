@@ -1,0 +1,34 @@
+<div *ngIf="!loading">
+  <button class="btn btn-link" (click)="onGoBack()"><< Retour</button>
+  <div class="single-thing-pane">
+    <div class="single-thing-info">
+      <h1>{{ list.titre }}</h1>
+      <div style="margin-bottom: 2em" *ngFor="let article of list.courses; let i = index">
+          <div  class="list-group-item" [ngClass]="
+          {'bgnone' : (article.buy === false),
+          'bggreen' : (article.buy === true)}">
+          <label>{{article.article}}</label>
+          <div style="margin-right: 1em;"> {{article.qte}}</div>
+          <button type="button" [disabled]="userId !== list?.userId" class="btn btn-default pull-right">
+            <span class="glyphicon glyphicon-check" (click)="StatusChange(i)"></span>
+          </button>
+          <button type="button" class="btn btn-default pull-right" [disabled]="userId !== list?.userId" (click)="onDeleteItem(i)">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <form [formGroup]="coursesForm">
+          <label for="article">Article</label>
+          <input type="text" placeholder="Quel est le nom de l'article ?" id="article" formControlName="article" class="form-control">
+          <label for="quantité">Quantité</label>
+          <input type="number" min="0" placeholder="De combien en avez vous besoin ?" id="quantité" formControlName="quantité" class="form-control">
+        </form>
+        <button style="margin-top: 1em;" class="btn btn-primary" (click)="onSubmit()" [disabled]="coursesForm.invalid || userId !== list?.userId">Valider</button>
+      </div>
+
+      <button class="btn btn-danger m-1" style="margin-top: 1em;" (click)="onDelete()" [disabled]="userId !== list?.userId">Supprimer</button>
+
+    </div>
+  </div>
+</div>

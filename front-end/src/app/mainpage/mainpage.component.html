@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Vos Listes</h2>
+    <div class="list-group">
+      <div *ngFor="let list of lists">
+      <div type="button" class="list-group-item"
+
+              *ngIf="userId === list.userId"
+              (click)="onViewList(list._id)">
+        <h3 class="list-group-item-heading">{{list.titre}}
+
+        </h3>
+      </div>
+      </div>
+    </div>
+    <div style="display: flex; height: 100%; justify-content: center">
+      <button type="button" style="margin-top: 1em; background-color: darkkhaki; border-color: blanchedalmond; height: 70px; width: 20%; font-size: 20px" (click)="onNewList()" class="btn-primary">Ajouter une liste</button>
+    </div>
+  </div>
+</div>
+
+
+
